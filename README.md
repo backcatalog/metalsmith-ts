@@ -4,13 +4,13 @@ A [Metalsmith](https://metalsmith.io) plugin for transpiling TypeScript files.
 
 ## Install
 
-```
+```bash
 yarn add -D metalsmith-ts
 ```
 
 ## Usage
 
-```
+```javascript
 const metalsmith = require('metalsmith');
 const markdown = require('@metalsmith/markdown');
 const layouts = require('@metalsmith/layouts');
@@ -23,14 +23,18 @@ metalsmith(__dirname)
     .source('src')
     .destination('build')
     .use(markdown())
-    .use(typescript({
-        outputDir: 'js/',
-    }))
-    .use(layouts({
-        suppressNoFilesError: true,
-    }))
+    .use(
+        typescript({
+            outputDir: 'js/',
+        })
+    )
+    .use(
+        layouts({
+            suppressNoFilesError: true,
+        })
+    )
     .build((err) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 ```
 
